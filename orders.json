@@ -1,0 +1,98 @@
+[
+   {
+      "order_id": 149,
+      "user_name": "тимур",
+      "items": [
+         {
+            "id_dish": 2,
+            "name_dish": "бургер",
+            "category": "десерт",
+            "price": 200,
+            "availability": true
+         }
+      ],
+      "total_price": 220.0,
+      "payment_method": "card",
+      "status": "Отменен"
+   },
+   {
+      "order_id": 173,
+      "user_name": "андрей",
+      "items": [
+         {
+            "id_dish": 2,
+            "name_dish": "бургер",
+            "category": "десерт",
+            "price": 200,
+            "availability": true
+         }
+      ],
+      "total_price": 220.0,
+      "payment_method": "card",
+      "status": "В процессе готовки"
+   },
+   {
+      "order_id": 132,
+      "user_name": "аня",
+      "items": [
+         {
+            "id_dish": 2,
+            "name_dish": "бургер",
+            "category": "десерт",
+            "price": 200,
+            "availability": true
+         }
+      ],
+      "total_price": 220.0,
+      "payment_method": "card",
+      "status": "В процессе готовки"
+   },
+   {
+      "order_id": 500,
+      "user_name": "f",
+      "items": [
+         {
+            "id_dish": 2,
+            "name_dish": "бургер",
+            "category": "десерт",
+            "price": 200,
+            "availability": true
+         }
+      ],
+      "total_price": 220.0,
+      "payment_method": "cash",
+      "status": "Оплачен"
+   },
+   {
+      "order_id": 457,
+      "user_name": "джери",
+      "items": [
+         {
+            "id_dish": 100,
+            "name_dish": "кари",
+            "category": "основное",
+            "price": 2500,
+            "availability": true
+         }
+      ],
+      "total_price": 2750.0,
+      "payment_method": "card",
+      "status": "Оплачен"
+   },
+   {
+      "order_id": 81,
+      "user_name": "алиар",
+      "items": [
+         {
+            "id_dish": 88,
+            "name_dish": "йогурт",
+            "category": "закуска",
+            "price": 88,
+            "availability": true
+         }
+      ],
+      "total_price": 96.8,
+      "payment_method": "card",
+      "status": "Оплачен"
+   }
+]
