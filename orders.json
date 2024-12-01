@@ -149,5 +149,56 @@
       "total_price": 3850.0,
       "payment_method": "card",
       "status": "Отменен"
+   },
+   {
+      "order_id": 338,
+      "user_name": "oleg",
+      "items": [
+         {
+            "id_dish": 2,
+            "name_dish": "бургер",
+            "category": "десерт",
+            "price": 200,
+            "availability": true
+         },
+         {
+            "id_dish": 1,
+            "name_dish": "огурец",
+            "category": "десерт",
+            "price": 102,
+            "availability": true
+         },
+         {
+            "id_dish": 100,
+            "name_dish": "кари",
+            "category": "основное",
+            "price": 2500,
+            "availability": true
+         },
+         {
+            "id_dish": 88,
+            "name_dish": "йогурт по неаполитански",
+            "category": "десерт",
+            "price": 1999,
+            "availability": true
+         },
+         {
+            "id_dish": 5,
+            "name_dish": "самый вкусный",
+            "category": "основное",
+            "price": 1000,
+            "availability": true
+         },
+         {
+            "id_dish": 1000,
+            "name_dish": "лягушки по французски",
+            "category": "основное",
+            "price": 5000,
+            "availability": true
+         }
+      ],
+      "total_price": 11881.1,
+      "payment_method": "card",
+      "status": "Оплачен"
    }
 ]

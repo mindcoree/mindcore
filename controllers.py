@@ -1,4 +1,7 @@
 import random
+
+from openpyxl.styles.builtins import total
+
 from models import MenuItem, Order
 from utils import print_most_dish, print_menu, print_format_revenue, print_filtering_by_category
 from storage import save_to_json
@@ -188,32 +191,37 @@ def handler_view_orders(restaurant):
                     print(f'Покупатель {order.user_name} с номером {order.order_id}')
                     print(f'  Вы заказали:')
                     total_money = 0
+                    print('-' * 40)
                     for item in items:
-                        print(f" Блюдо: {item.get('name_dish')}")
-                        print(f" Категория блюда: {item.get('category')}")
-                        print(f" Цена блюда без налога: {item.get('price')}")
-                        total_money += order.total_price
+                        print(f"    Блюдо: {item.get('name_dish')}")
+                        print(f"    Категория блюда: {item.get('category')}")
+                        print(f"    Цена блюда без налога: {item.get('price')}")
+                        total_money = order.total_price
+                        print('-' * 40)
 
                     print(f'C вас: {order.total_price} и оплата {order.payment_method}')
+                    print()
                     input_payment = input('Оплатить (Да/Нет):')
                     if input_payment.lower() in ('да', 'нет'):
                         if input_payment == 'да':
                             pay_user = input(f'Укажите сумму оплаты: ')
+                            print(total_money)
                             if pay_user.isdigit():
                                 pay_user = int(pay_user)
                             else:
                                 print('Ошибка: некорректная сумма оплаты.')
                                 continue
-
                             if pay_user > total_money:
                                 pay_user -= total_money
-                                print(f'Спасибо за покупку. Ваша сдача: {pay_user}')
+                                print(f'Спасибо за покупку. Ваша сдача: {round(pay_user,2)}')
                                 order.update_status('Оплачен')
+                                print('Приходите еще раз.')
                                 return
 
                             elif pay_user == total_money:
                                 print(f"Спасибо за покупку.")
                                 order.update_status('Оплачен')
+                                print('Приходите еще раз.')
                                 return
 
                             else:
@@ -253,15 +261,16 @@ def handler_show_orders(restaurant):
         print(f"  Клиент: {ord.get('user_name')}")
 
         for item_menu in ord.get('items'):
+            print('-' * 40)
             print(f'   ID блюда: {item_menu.get("id_dish")}')
             print(f'   Название блюда: {item_menu.get("name_dish")}')
             print(f'   Категория блюда: {item_menu.get("category")}')
             print(f'   Цена блюда: {item_menu.get("price")}')
             print(f'   Наличие блюда: {item_menu.get("availability")}')
-
+        print('-' * 40)
         print(f'   Способ оплаты: {ord.get("payment_method")}')
         print(f"   Итог заказа: {ord.get('total_price')}")
-        print('-' * 40)
+        print('-' * 50)
 
     for orders_show in restaurant.orders:
         orders = orders_show.to_dict_order()

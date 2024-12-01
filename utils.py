@@ -59,7 +59,7 @@ def print_filtering_by_category(restaurant):
 
         print(f"Категория: {category}")
 
-        print(f"  Общее количество блюд: {data['total_dish']}")
+        print(f"  Общее количество купленных блюд: {data['total_dish']}")
 
         print(f"  Топ популярных блюд по категории:")
 

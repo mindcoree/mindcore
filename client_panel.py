@@ -12,7 +12,7 @@ def client(restaurant):
         print('2. Заказать блюдо.')
         print('3. Рассчитать общую стоимость заказа.')
         print('4. Обновление статусов заказов.')
-        print('5. Выход.')
+        print('5. Выход из ресторана.')
         client_choice = input('Ваш выбор:')
         if client_choice in ('1','2','3','4','5'):
             if client_choice == '1':
@@ -25,7 +25,7 @@ def client(restaurant):
                 handler_update_status_orders(restaurant)
             elif client_choice == '5':
                 handler_exit(restaurant)
-                print('Выход из ресторана')
+                print('Cпасибо, приходите еще раз. ')
                 break
         else:
             print('Ошибка: неправильный ввод')
