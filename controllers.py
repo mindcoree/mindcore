@@ -1,10 +1,7 @@
 import random
-
-from openpyxl.styles.builtins import total
-
 from models import MenuItem, Order
 from utils import print_most_dish, print_menu, print_format_revenue, print_filtering_by_category
-from storage import save_to_json
+from storage import save_to_json, load_json
 
 
 def handler_add_menu(restaurant):
@@ -76,8 +73,10 @@ def handler_update_manu(restaurant):
         dishes_name = [dish.name_dish for dish in restaurant.menu]
         dishes_id_and_name = zip(dishes_id,dishes_name)
         print('Сейчас есть такие блюда: ')
+        print('-' * 50)
         for item_id,item_name in dishes_id_and_name:
             print(f'    блюдо:{item_name} c ID: {item_id}')
+            print('-' * 50)
         id_dish = input('Введите ID блюда которое хотите изменить:')
         name_dish = input('Введите новое или прежнее название блюда:')
         price = input('Введите новую цену блюда:')
@@ -85,13 +84,12 @@ def handler_update_manu(restaurant):
             id_dish,price = int(id_dish),int(price)
             if id_dish >= 0 and price >= 0:
                 category = input('Введите новую категорию блюда (основное/закуска/десерт):').lower()
+
                 if category in ("основное", "закуска", "десерт"):
                     availability = input('Доступ к блюду (да/нет):').lower()
+
                     if availability in ('да','нет'):
-                        if availability == 'да':
-                            availability = True
-                        else:
-                            availability = False
+
                         if restaurant.update_menu_dish(id_dish, name_dish, category, price, availability):
                             save_to_json(restaurant)
                         break

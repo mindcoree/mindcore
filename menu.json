@@ -1,46 +1,23 @@
 [
    {
       "id_dish": 2,
-      "name_dish": "бургер",
+      "name_dish": "банан в шоколаде",
       "category": "десерт",
-      "price": 200,
+      "price": 780,
+      "availability": true
+   },
+   {
+      "id_dish": 3,
+      "name_dish": "тирамису",
+      "category": "десерт",
+      "price": 970,
       "availability": true
    },
    {
       "id_dish": 1,
-      "name_dish": "огурец",
-      "category": "десерт",
-      "price": 102,
-      "availability": true
-   },
-   {
-      "id_dish": 100,
       "name_dish": "кари",
-      "category": "основное",
-      "price": 2500,
-      "availability": true
-   },
-   {
-      "id_dish": 88,
-      "name_dish": "йогурт по неаполитански",
-      "category": "десерт",
-      "price": 1999,
-      "availability": true
-   },
-   {
-      "id_dish": 5,
-      "name_dish": "самый вкусный",
-      "category": "основное",
-      "price": 1000,
-      "availability": true
-   },
-   {
-      "id_dish": 1000,
-      "name_dish": "лягушки по французски",
-      "category": "основное",
-      "price": 5000,
+      "category": "закуска",
+      "price": 2000,
       "availability": true
    }
 ]
-
-

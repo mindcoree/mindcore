@@ -1,6 +1,7 @@
 from admin_panel import admin
 from storage import load_json
 from client_panel import client
+#643 строчек кода
 
 def main():
     restaurant = load_json()
@@ -20,7 +21,6 @@ def main():
                 break
         else:
             print('Ошибка: Введите ( 1 / 2 / 3 )')
-
 
 if __name__ == "__main__":
     main()

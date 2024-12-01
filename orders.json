@@ -1,204 +1,34 @@
 [
    {
-      "order_id": 149,
-      "user_name": "тимур",
+      "order_id": 357,
+      "user_name": "Алиар Нурканат",
       "items": [
          {
             "id_dish": 2,
-            "name_dish": "бургер",
+            "name_dish": "банан в шоколаде",
             "category": "десерт",
-            "price": 200,
+            "price": 780,
             "availability": true
          }
       ],
-      "total_price": 220.0,
+      "total_price": 858.0,
       "payment_method": "card",
-      "status": "Отменен"
+      "status": "Оплачен"
    },
    {
-      "order_id": 173,
-      "user_name": "андрей",
+      "order_id": 315,
+      "user_name": "андрей\\",
       "items": [
          {
-            "id_dish": 2,
-            "name_dish": "бургер",
+            "id_dish": 3,
+            "name_dish": "тирамису",
             "category": "десерт",
-            "price": 200,
+            "price": 970,
             "availability": true
          }
       ],
-      "total_price": 220.0,
+      "total_price": 1067.0,
       "payment_method": "card",
       "status": "В процессе готовки"
-   },
-   {
-      "order_id": 132,
-      "user_name": "аня",
-      "items": [
-         {
-            "id_dish": 2,
-            "name_dish": "бургер",
-            "category": "десерт",
-            "price": 200,
-            "availability": true
-         }
-      ],
-      "total_price": 220.0,
-      "payment_method": "card",
-      "status": "В процессе готовки"
-   },
-   {
-      "order_id": 500,
-      "user_name": "f",
-      "items": [
-         {
-            "id_dish": 2,
-            "name_dish": "бургер",
-            "category": "десерт",
-            "price": 200,
-            "availability": true
-         }
-      ],
-      "total_price": 220.0,
-      "payment_method": "cash",
-      "status": "Оплачен"
-   },
-   {
-      "order_id": 457,
-      "user_name": "джери",
-      "items": [
-         {
-            "id_dish": 100,
-            "name_dish": "кари",
-            "category": "основное",
-            "price": 2500,
-            "availability": true
-         }
-      ],
-      "total_price": 2750.0,
-      "payment_method": "card",
-      "status": "Оплачен"
-   },
-   {
-      "order_id": 81,
-      "user_name": "алиар",
-      "items": [
-         {
-            "id_dish": 88,
-            "name_dish": "йогурт",
-            "category": "закуска",
-            "price": 88,
-            "availability": true
-         }
-      ],
-      "total_price": 96.8,
-      "payment_method": "card",
-      "status": "Оплачен"
-   },
-   {
-      "order_id": 302,
-      "user_name": "джон",
-      "items": [
-         {
-            "id_dish": 5,
-            "name_dish": "Самый вкусный",
-            "category": "основное",
-            "price": 1000,
-            "availability": true
-         }
-      ],
-      "total_price": 1100.0,
-      "payment_method": "card",
-      "status": "Оплачен"
-   },
-   {
-      "order_id": 286,
-      "user_name": "Lod",
-      "items": [
-         {
-            "id_dish": 5,
-            "name_dish": "самый вкусный",
-            "category": "основное",
-            "price": 1000,
-            "availability": true
-         }
-      ],
-      "total_price": 1100.0,
-      "payment_method": "card",
-      "status": "В процессе готовки"
-   },
-   {
-      "order_id": 449,
-      "user_name": "Адам",
-      "items": [
-         {
-            "id_dish": 100,
-            "name_dish": "кари",
-            "category": "основное",
-            "price": 2500,
-            "availability": true
-         },
-         {
-            "id_dish": 5,
-            "name_dish": "самый вкусный",
-            "category": "основное",
-            "price": 1000,
-            "availability": true
-         }
-      ],
-      "total_price": 3850.0,
-      "payment_method": "card",
-      "status": "Отменен"
-   },
-   {
-      "order_id": 338,
-      "user_name": "oleg",
-      "items": [
-         {
-            "id_dish": 2,
-            "name_dish": "бургер",
-            "category": "десерт",
-            "price": 200,
-            "availability": true
-         },
-         {
-            "id_dish": 1,
-            "name_dish": "огурец",
-            "category": "десерт",
-            "price": 102,
-            "availability": true
-         },
-         {
-            "id_dish": 100,
-            "name_dish": "кари",
-            "category": "основное",
-            "price": 2500,
-            "availability": true
-         },
-         {
-            "id_dish": 88,
-            "name_dish": "йогурт по неаполитански",
-            "category": "десерт",
-            "price": 1999,
-            "availability": true
-         },
-         {
-            "id_dish": 5,
-            "name_dish": "самый вкусный",
-            "category": "основное",
-            "price": 1000,
-            "availability": true
-         },
-         {
-            "id_dish": 1000,
-            "name_dish": "лягушки по французски",
-            "category": "основное",
-            "price": 5000,
-            "availability": true
-         }
-      ],
-      "total_price": 11881.1,
-      "payment_method": "card",
-      "status": "Оплачен"
    }
 ]
