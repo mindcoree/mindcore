@@ -165,20 +165,23 @@ def handler_orders(restaurant):
         else:
             print('Ошибка: неправильный ввод ID.')
 
-
 def handler_view_orders(restaurant):
     while True:
-        input_id_user = input(f'Введите номер заказа для получения информации:')
+        input_id_user = input(f'Введите номер заказа для получения информации: ')
 
         if input_id_user.isdigit():
             input_id_user = int(input_id_user)
         else:
-            print('введите корректный номер заказа.')
+            print('Введите корректный номер заказа.')
             continue
 
-        id_order =  next(filter(lambda item_ord:item_ord.order_id == input_id_user,restaurant.orders), None)
+        id_order = next((item_ord for item_ord in restaurant.orders if item_ord.order_id == input_id_user), None)
 
         if id_order:
+            if id_order.status in ['Оплачен', 'Отменен']:
+                print(f'Заказ {input_id_user} уже {id_order.status}.')
+                break
+
             for order in restaurant.orders:
                 if order.order_id == input_id_user:
                     items = order.to_dict_order()['items']
@@ -186,55 +189,54 @@ def handler_view_orders(restaurant):
                     print(f'  Вы заказали:')
                     total_money = 0
                     for item in items:
-
                         print(f" Блюдо: {item.get('name_dish')}")
                         print(f" Категория блюда: {item.get('category')}")
-                        print(f"Цена блюда без налога: {item.get('price')}")
+                        print(f" Цена блюда без налога: {item.get('price')}")
                         total_money += order.total_price
 
-                    print(f'C вас:{order.total_price} и оплата {order.payment_method}')
+                    print(f'C вас: {order.total_price} и оплата {order.payment_method}')
                     input_payment = input('Оплатить (Да/Нет):')
-                    if input_payment.lower() in ('да','нет'):
+                    if input_payment.lower() in ('да', 'нет'):
                         if input_payment == 'да':
-
                             pay_user = input(f'Укажите сумму оплаты: ')
-                            if  pay_user.isdigit():
-
+                            if pay_user.isdigit():
                                 pay_user = int(pay_user)
                             else:
-                                print('Ошибка: некорректный сумма оплаты')
+                                print('Ошибка: некорректная сумма оплаты.')
                                 continue
-                            if pay_user > total_money:
 
+                            if pay_user > total_money:
                                 pay_user -= total_money
-                                print(f'Спасибо за покупку ваша сдача: {pay_user}')
+                                print(f'Спасибо за покупку. Ваша сдача: {pay_user}')
                                 order.update_status('Оплачен')
                                 return
-                            elif pay_user == total_money:
 
+                            elif pay_user == total_money:
                                 print(f"Спасибо за покупку.")
                                 order.update_status('Оплачен')
                                 return
+
                             else:
-                                print('Вам не хватает сред для оплаты вашего заказа.')
+                                print('Вам не хватает средств для оплаты вашего заказа.')
                                 input_try = input('Попробовать еще раз (Да/Нет):')
-                                if input_try.lower() in ('Да', 'Нет'):
-                                    if input_try == 'да':
-                                        continue
+                                if input_try.lower() == 'да':
+                                    continue
+
                                 else:
-                                    print('неправильный ввод попробуйте еще раз.')
+                                    print('Неправильный ввод, попробуйте еще раз.')
                                     continue
 
                         else:
                             print(f'Ваш заказ под номером {input_id_user} отменен.')
                             order.update_status('Отменен')
                             return
+
                     else:
                         print('Ошибка при оплате.')
                         continue
 
         else:
-            print(f'Номер:{input_id_user} заказа не существует.')
+            print(f'Номер заказа: {input_id_user} не существует.')
             break
 
 
