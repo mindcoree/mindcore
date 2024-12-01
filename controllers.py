@@ -69,13 +69,19 @@ def handler_exit(restaurant):
 
 def handler_update_manu(restaurant):
     while True:
-        id_dish = input('Введите ID блюда:')
-        name_dish = input('Введите названия блюда:')
-        price = input('Введите цену:')
+        dishes_id = [dish.id_dish for dish in restaurant.menu]
+        dishes_name = [dish.name_dish for dish in restaurant.menu]
+        dishes_id_and_name = zip(dishes_id,dishes_name)
+        print('Сейчас есть такие блюда: ')
+        for item_id,item_name in dishes_id_and_name:
+            print(f'    блюдо:{item_name} c ID: {item_id}')
+        id_dish = input('Введите ID блюда которое хотите изменить:')
+        name_dish = input('Введите новое или прежнее название блюда:')
+        price = input('Введите новую цену блюда:')
         if id_dish.isdigit() and price.isdigit():
             id_dish,price = int(id_dish),int(price)
             if id_dish >= 0 and price >= 0:
-                category = input('Введите категорию блюда (основное/закуска/десерт):').lower()
+                category = input('Введите новую категорию блюда (основное/закуска/десерт):').lower()
                 if category in ("основное", "закуска", "десерт"):
                     availability = input('Доступ к блюду (да/нет):').lower()
                     if availability in ('да','нет'):
@@ -96,7 +102,6 @@ def handler_update_manu(restaurant):
             print('Ошибка: неправильный ввод данны.')
 
 
-
 def handler_orders(restaurant):
     user_name = input('Введите ваше имя для оформления заказа:')
     user_id = random.randint(1, 500)
@@ -106,59 +111,59 @@ def handler_orders(restaurant):
         id_dish_list = [item.id_dish for item in restaurant.menu]
         name_dish = [dish.name_dish for dish in restaurant.menu]
         dishes = zip(id_dish_list, name_dish)
-        print('Сейчас в ресторане есть такие блюда.')
-        for id_dish,name_dish in dishes:
-            print(f'ID:{id_dish} Блюдо {name_dish}')
-        print('введите ID блюд которые хотите заказать через запятую')
+        print('Сейчас в ресторане есть такие блюда:')
+        for id_dish, name_dish in dishes:
+            print(f'ID: {id_dish} Блюдо: {name_dish}')
+
+        print('Введите ID блюд, которые хотите заказать через запятую:')
         input_id = input('ID блюда:').split(',')
 
         id_menu_user = []
 
-        for i in input_id:
-            i = i.strip()
-            if not i.isdigit():
+        for ids in input_id:
+            ids = ids.strip()
+            if not ids.isdigit():
                 print(f'Ошибка: неправильный ввод ID')
                 correct_id = False
                 break
             else:
-                id_menu_user.append(int(i))
+                id_menu_user.append(int(ids))
 
         check_id_menu = [id_menu for id_menu in id_menu_user if id_menu not in id_dish_list]
-
         if correct_id:
             if not check_id_menu:
-
                 items = []
                 for id_menu in id_menu_user:
-
-                    item = next(filter(lambda item:item.id_dish == id_menu,restaurant.menu), None)
+                    item = next(filter(lambda item: item.id_dish == id_menu, restaurant.menu), None)
 
                     if item:
                         if item.availability:
                             items.append(item)
-                            payment_method = input('введите способ оплаты ( наличными / картой ):').lower()
-
-                            if payment_method in ("наличными", "картой"):
-                                if payment_method == "наличными":
-                                    payment_method = 'cash'
-                                else:
-                                    payment_method = 'card'
-
-                                new_order = Order(user_id, user_name, items, payment_method,'В процессе готовки')
-                                restaurant.append_orders(new_order)
-                                print(f'Ваш заказ под номером: {user_id} оформлен, пожалуйста ожидайте.')
-                                return
-                            else:
-                                print('Ошибка: неправильный способ оплаты')
-                                print('Пожалуйста укажите правильный способ оплаты ( наличными / картой )')
                         else:
                             print(f'Блюдо с ID {id_menu} не доступно.')
                     else:
                         print(f'Блюдо с ID {id_menu} не найдено в меню.')
+
+                if items:
+                    payment_method = input('Введите способ оплаты (наличными / картой): ').lower()
+                    if payment_method in ("наличными", "картой"):
+                        if payment_method == "наличными":
+                            payment_method = 'cash'
+                        else:
+                            payment_method = 'card'
+
+                        new_order = Order(user_id, user_name, items, payment_method, 'В процессе готовки')
+                        restaurant.append_orders(new_order)
+                        print(f'Ваш заказ под номером: {user_id} оформлен, пожалуйста, ожидайте.')
+                        return
+                    else:
+                        print(
+                            'Ошибка: неправильный способ оплаты. Пожалуйста, укажите правильный способ оплаты (наличными / картой).')
+                        continue
             else:
-                print(f'Блюда с ID {id_menu_user} не существуют.')
+                print(f'Следующие ID блюд не существуют: {check_id_menu}')
         else:
-            print('неправильный ввод ID')
+            print('Ошибка: неправильный ввод ID.')
 
 
 def handler_view_orders(restaurant):
@@ -189,8 +194,7 @@ def handler_view_orders(restaurant):
 
                     print(f'C вас:{order.total_price} и оплата {order.payment_method}')
                     input_payment = input('Оплатить (Да/Нет):')
-
-                    if input_payment.lower() in ('да','Нет'):
+                    if input_payment.lower() in ('да','нет'):
                         if input_payment == 'да':
 
                             pay_user = input(f'Укажите сумму оплаты: ')
@@ -224,7 +228,6 @@ def handler_view_orders(restaurant):
                         else:
                             print(f'Ваш заказ под номером {input_id_user} отменен.')
                             order.update_status('Отменен')
-                            del order
                             return
                     else:
                         print('Ошибка при оплате.')
@@ -239,30 +242,53 @@ def handler_show_orders(restaurant):
     print('Отображение информации по клиентам:\n')
     print('-' * 40)
 
-    for order_show in restaurant.orders:
-        orders = order_show.to_dict_order()
+    in_progress_status_orders = []
+    paid_status_orders = []
+    canceled_status_orders =[]
 
-        def user_order(ord):
-            print(f" ID: {ord.get('order_id')}", end='|')
-            print(f"  Клиент: {ord.get('user_name')}")
+    def user_order(ord):
+        print(f" Номер заказа: {ord.get('order_id')}", end=' |')
+        print(f"  Клиент: {ord.get('user_name')}")
 
-            for item_menu in ord.get('items'):
-                print(f'   ID блюда: {item_menu.get("id_dish")}')
-                print(f'   Название блюда: {item_menu.get("name_dish")}')
-                print(f'   Категория блюда: {item_menu.get("category")}')
-                print(f'   Цена блюда: {item_menu.get("price")}')
-                print(f'   Наличие блюда: {item_menu.get("availability")}')
+        for item_menu in ord.get('items'):
+            print(f'   ID блюда: {item_menu.get("id_dish")}')
+            print(f'   Название блюда: {item_menu.get("name_dish")}')
+            print(f'   Категория блюда: {item_menu.get("category")}')
+            print(f'   Цена блюда: {item_menu.get("price")}')
+            print(f'   Наличие блюда: {item_menu.get("availability")}')
 
-            print(f'   Способ оплаты: {ord.get("payment_method")}')
-            print(f"   Итог заказа: {ord.get('total_price')}")
-            print('-' * 40)
+        print(f'   Способ оплаты: {ord.get("payment_method")}')
+        print(f"   Итог заказа: {ord.get('total_price')}")
+        print('-' * 40)
+
+    for orders_show in restaurant.orders:
+        orders = orders_show.to_dict_order()
 
         if orders.get('status') == 'В процессе готовки':
-            print('Клиент с заказом в процессе готовки:')
-            user_order(orders)
-        else:
-            print('Клиент с завершенным заказом:')
-            user_order(orders)
+            in_progress_status_orders.append(orders)
+
+        elif orders.get('status') == 'Отменен':
+            canceled_status_orders.append(orders)
+
+        elif orders.get('status') == 'Оплачен':
+            paid_status_orders.append(orders)
+
+
+    if in_progress_status_orders:
+        print('Клиенты с заказами в процессе готовки:')
+        for order in in_progress_status_orders:
+            user_order(order)
+
+    if canceled_status_orders:
+        print('Клиенты с отмененными заказами:')
+        for order in canceled_status_orders:
+            user_order(order)
+
+    if paid_status_orders:
+        print('Клиенты с оплаченными заказами:')
+        for order in paid_status_orders:
+            user_order(order)
+
 
 
 def handler_update_status_orders(restaurant):

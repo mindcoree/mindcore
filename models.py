@@ -80,7 +80,6 @@ class Restaurant:
     def update_menu_dish(self,id_dish,new_name_dish,new_category,new_price,new_availability):
 
         item = next(filter(lambda item_id:item_id.id_dish == id_dish,self.menu),None)
-
         if item:
 
             self.menu = [dish for dish in self.menu if dish.id_dish != id_dish]
@@ -96,10 +95,10 @@ class Restaurant:
 
             self.append_menu(item)
 
-            print(f'Блюдо {new_name_dish} с ID {id_dish} успешно обновлено')
+            print(f'Блюдо: {new_name_dish} с ID {id_dish} успешно обновлено.')
             return True
         else:
-            print(f"Блюдо {new_name_dish} с ID {id_dish} не найдено")
+            print(f"Блюдо: {new_name_dish} с ID {id_dish} не найдено.")
             return False
 
 

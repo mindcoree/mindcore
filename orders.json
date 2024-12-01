@@ -94,5 +94,60 @@
       "total_price": 96.8,
       "payment_method": "card",
       "status": "Оплачен"
+   },
+   {
+      "order_id": 302,
+      "user_name": "джон",
+      "items": [
+         {
+            "id_dish": 5,
+            "name_dish": "Самый вкусный",
+            "category": "основное",
+            "price": 1000,
+            "availability": true
+         }
+      ],
+      "total_price": 1100.0,
+      "payment_method": "card",
+      "status": "Оплачен"
+   },
+   {
+      "order_id": 286,
+      "user_name": "Lod",
+      "items": [
+         {
+            "id_dish": 5,
+            "name_dish": "самый вкусный",
+            "category": "основное",
+            "price": 1000,
+            "availability": true
+         }
+      ],
+      "total_price": 1100.0,
+      "payment_method": "card",
+      "status": "В процессе готовки"
+   },
+   {
+      "order_id": 449,
+      "user_name": "Адам",
+      "items": [
+         {
+            "id_dish": 100,
+            "name_dish": "кари",
+            "category": "основное",
+            "price": 2500,
+            "availability": true
+         },
+         {
+            "id_dish": 5,
+            "name_dish": "самый вкусный",
+            "category": "основное",
+            "price": 1000,
+            "availability": true
+         }
+      ],
+      "total_price": 3850.0,
+      "payment_method": "card",
+      "status": "Отменен"
    }
 ]
