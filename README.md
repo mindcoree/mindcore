@@ -30,7 +30,7 @@
 
 1. Клонируйте репозиторий:
     ```bash
-    git clone https://github.com/mindcoree/mindcore.git
+    git clone https://github.com/mindcoree/restaurant_control_system.git
     cd mindcore
     ```
 2. Убедитесь, что у вас установлен Python 3.10+.
